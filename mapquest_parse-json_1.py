@@ -10,8 +10,14 @@ key = "gAQG3TGrxa2u2P4uR4mtkjg4oC59iOIJ"
 
 #Implementando funcionalidad para entrada de usuario:
 while True:
+    #Solicitando entrada de usuario para las variables de origen y destino:
+    #Si la entrada del usuario es "q" ó "quit", el programa terminará (se cierra el bucle while):
     origin = input("Starting location: ")
+    if origin == "q" or origin == "quit":
+        break
     destination = input("Destination: ")
+    if destination == "q" or destination == "quit":
+        break
     #Uso del método urlencode() para dar formato al valor de la URL:
     url = main_api + urllib.parse.urlencode({"key": key, "from": origin, "to": destination})
     #Mostrando al usuario la URL de la petición:
