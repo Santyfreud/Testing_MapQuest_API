@@ -29,6 +29,7 @@ while True:
     json_status = json_data["info"]["statuscode"]
     if json_status == 0:
         print("API Status: {} = A successful route call.\n".format(json_status))
+
         #Extrayendo más datos de la key "route":
         print("=============================================")
         print("Directions from {0} to {1}".format(origin, destination))
@@ -36,7 +37,23 @@ while True:
         print ("Kilometers: {:.2f}".format(json_data["route"]["distance"]*1.61))
         print ("Fuel used [Ltr]: {:.2f}".format(json_data["route"] ["fuelUsed"]*3.78))
         print("=============================================")
+
         #Mostrando al usuario los datos de la key "maneuvers":
         for each in json_data["route"]["legs"][0]["maneuvers"]:
             print("{0} ({1:.2f} km)".format(each["narrative"], each["distance"]*1.61))
             print("=============================================")
+
+    #Agregando funcionalidades para "statuscode" != 0:
+    elif json_status == 402:
+        print("**********************************************")
+        print("API Status: {0}. {1} Invalid user entry for one or both of the locations".format(json_status, json_data["info"]["messages"][0]))
+        print("**********************************************")
+    elif json_status == 611:
+        print("**********************************************")
+        print("API Status: {0}. {1} Missing user entry for one or both of the locations".format(json_status, json_data["info"]["messages"][0]))
+        print("**********************************************")
+    else:
+        print("************************************************************************")
+        print("For Status code: {}; see:".format(json_status))
+        print("https://developer.mapquest.com/documentation/directions-api/status-codes")
+        print("************************************************************************\n")
