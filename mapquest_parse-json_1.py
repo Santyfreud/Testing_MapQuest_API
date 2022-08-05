@@ -29,3 +29,10 @@ while True:
     json_status = json_data["info"]["statuscode"]
     if json_status == 0:
         print("API Status: {} = A successful route call.\n".format(json_status))
+        #Extrayendo más datos de la key "route":
+        print("=============================================")
+        print("Directions from {0} to {1}".format(origin, destination))
+        print("Trip Duration: {}".format(json_data["route"]["formattedTime"]))
+        print ("Kilometers: {:.2f}".format(json_data["route"]["distance"]*1.61))
+        print ("Fuel used [Ltr]: {:.2f}".format(json_data["route"] ["fuelUsed"]*3.78))
+        print("=============================================")
