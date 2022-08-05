@@ -36,3 +36,7 @@ while True:
         print ("Kilometers: {:.2f}".format(json_data["route"]["distance"]*1.61))
         print ("Fuel used [Ltr]: {:.2f}".format(json_data["route"] ["fuelUsed"]*3.78))
         print("=============================================")
+        #Mostrando al usuario los datos de la key "maneuvers":
+        for each in json_data["route"]["legs"][0]["maneuvers"]:
+            print("{0} ({1:.2f} km)".format(each["narrative"], each["distance"]*1.61))
+            print("=============================================")
