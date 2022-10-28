@@ -1,0 +1,4 @@
+Hi!
+Are you learning git?
+How is going on so far?
+Hope you are rocking this!
